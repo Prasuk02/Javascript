@@ -8,5 +8,3 @@ function twoSum(arr, target){
     }
     return -1
 }
-
-console.log(twoSum([3, 2, 4], 6))
