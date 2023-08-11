@@ -1,0 +1,22 @@
+function isValid(string){
+    let map = {
+        '(' : ')',
+        '[' : ']',
+        '{' : '}'
+    }
+    let stack = []
+    for(let char of string){
+        if(char in map){
+            stack.push(char)
+        }
+        else{
+            if(map[stack.pop()] != char){
+                return false
+            }
+        }
+    }
+    
+    return stack.length == 0 ? true : false
+}
+
+console.log(isValid("()[{]]"))
