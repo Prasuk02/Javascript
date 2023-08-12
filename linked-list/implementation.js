@@ -67,7 +67,7 @@ class LinkedList{
             this._length++
         }
         else{
-            console.log(`Invalid position, enter position value >= 0 or < ${this._length}`)
+            console.log(`Invalid position, enter position value >= 0 or <= ${this._length}`)
         }
     }
 
@@ -96,7 +96,6 @@ class LinkedList{
             return
         }
         if(index_pos === 0){
-            console.log('entered')
             let newHead = this.head.next
             this.head = newHead
         }
@@ -104,9 +103,7 @@ class LinkedList{
             let data_prev_of_index_pos;
             for(let currentNode = this.head, i=0; i<index_pos; currentNode = currentNode.next, i++){
                 if(i === index_pos-1){
-                    console.log(i)
                     data_prev_of_index_pos = currentNode;
-                    console.log(currentNode)
                 }
             }
             data_prev_of_index_pos.next = data_prev_of_index_pos.next.next;
@@ -119,22 +116,13 @@ class LinkedList{
 }
 
 const linkedList = new LinkedList()
-console.log('*** LINKED LIST CREATED ***')
-linkedList.insertEnd(5)
 linkedList.insertEnd('Prasuk Jain')
 linkedList.insertBegin('Hello World')
-linkedList.insertBegin('Hello World 1')
-linkedList.insertBegin('Hello World 2')
 linkedList.insertPosition(1, 'data')
-linkedList.insertPosition(4, 'data end')
-linkedList.insertPosition(0, 'data begin')
 linkedList.displayData()
-linkedList.deletePosition(0)
-console.log('head: ',linkedList.head)
 linkedList.deletePosition(3)
-console.log('tail: ',linkedList.tail)
-linkedList.displayData()
+linkedList.deleteEnd(3)
+linkedList.deleteBegin(3)
+console.log('head: ',linkedList.head)
 console.log('tail: ',linkedList.tail)
 console.log('length: ',linkedList._length)
-
-// console.log('length: ',linkedList._length)
