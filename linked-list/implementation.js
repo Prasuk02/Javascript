@@ -31,7 +31,7 @@ class LinkedList{
 
     insertBegin(value){
         if(!this.head){
-            this.insertBegin(value)
+            this.insertEnd(value)
         }
         else{
             let new_head = {data: value, next: null};
@@ -47,20 +47,74 @@ class LinkedList{
             let data_prev_to_given_index_pos;
             for(let currentValue = this.head; i<index_pos; currentValue=currentValue.next){
                 if(i == index_pos - 1){
-                    console.log('enterd **************', i)
-                    console.log('currentValue: ',currentValue)
                     data_prev_to_given_index_pos = currentValue
                 }
                 i++
             }
-            let data_to_insert = {data: value, next: null};
-            data_to_insert.next = data_prev_to_given_index_pos.next;
-            data_prev_to_given_index_pos.next = data_to_insert; 
+            if(index_pos == 0){
+                let newHeadData = {data: value, next: null}
+                newHeadData.next = this.head;
+                this.head = newHeadData
+            }
+            else{
+                let data_to_insert = {data: value, next: null};
+                data_to_insert.next = data_prev_to_given_index_pos.next;
+                data_prev_to_given_index_pos.next = data_to_insert; 
+                if(index_pos == this._length){
+                    this.tail = data_to_insert
+                }
+            }
             this._length++
         }
         else{
             console.log(`Invalid position, enter position value >= 0 or < ${this._length}`)
         }
+    }
+
+    deleteBegin(){
+        let next_data_to_head = this.head.next;
+        this.head = next_data_to_head;
+        this._length--;
+    }
+
+    deleteEnd(){
+        let newTail;
+        for(let currentValue = this.head, i = 0; i<this._length - 1; i++, currentValue = currentValue.next){
+            if(i == this._length - 2){
+                newTail = currentValue;
+                break
+            }
+        }
+        this.tail = newTail;
+        this.tail.next = null
+        this._length--
+    }
+
+    deletePosition(index_pos){
+        if(index_pos >= this._length){
+            console.log('Error, node not available at this index position')
+            return
+        }
+        if(index_pos === 0){
+            console.log('entered')
+            let newHead = this.head.next
+            this.head = newHead
+        }
+        else{
+            let data_prev_of_index_pos;
+            for(let currentNode = this.head, i=0; i<index_pos; currentNode = currentNode.next, i++){
+                if(i === index_pos-1){
+                    console.log(i)
+                    data_prev_of_index_pos = currentNode;
+                    console.log(currentNode)
+                }
+            }
+            data_prev_of_index_pos.next = data_prev_of_index_pos.next.next;
+            if(index_pos == this._length - 1){
+                this.tail = data_prev_of_index_pos;
+            }
+        }
+        this._length--
     }
 }
 
@@ -69,8 +123,18 @@ console.log('*** LINKED LIST CREATED ***')
 linkedList.insertEnd(5)
 linkedList.insertEnd('Prasuk Jain')
 linkedList.insertBegin('Hello World')
+linkedList.insertBegin('Hello World 1')
+linkedList.insertBegin('Hello World 2')
 linkedList.insertPosition(1, 'data')
 linkedList.insertPosition(4, 'data end')
-console.log('length: ',linkedList._length)
-console.log('head: ',linkedList.head)
+linkedList.insertPosition(0, 'data begin')
 linkedList.displayData()
+linkedList.deletePosition(0)
+console.log('head: ',linkedList.head)
+linkedList.deletePosition(3)
+console.log('tail: ',linkedList.tail)
+linkedList.displayData()
+console.log('tail: ',linkedList.tail)
+console.log('length: ',linkedList._length)
+
+// console.log('length: ',linkedList._length)
