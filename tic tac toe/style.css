@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1{
+    color: rgb(24, 103, 167);
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 15px;
+}
+
+.mainContainer{
+    width: 70vw;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.gameContainer{
+    display: grid;
+    grid-template-columns: repeat(3, 5vw);
+    grid-template-rows: repeat(3, 5vw);
+}
+
+.box{
+    border: 2px solid #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 700;
+    color: #dc3545;
+}
+
+.box:hover{
+    background-color: #df76803f;
+}
+
+.bt-0{
+  border-top: none;  
+}
+.br-0{
+  border-right: none;  
+}
+.bl-0{
+  border-left: none;  
+}
+.bb-0{
+  border-bottom: none;  
+}
+
+.sideContainer{
+  font-size: 20px;
+  font-weight: 500;
+  color: #222;
+}
+
+#resetBtn{
+  padding: 10px 18px;
+  border: none;
+  background-color: #6abb51;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+#resetBtn:hover{
+  cursor: pointer;
+}
+
+#winnerAnnouncement{
+  color: #466e39;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 600px){
+  .mainContainer{
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .gameContainer{
+    grid-template-columns: repeat(3, 15vw);
+    grid-template-rows: repeat(3, 15vw);
+}
+}
