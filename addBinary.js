@@ -1,15 +1,16 @@
-var addBinary = function(a, b) {                    //1010, 1011
+var addBinary = function(a, b) {
     let binaryMap = {
+        0: 0,
         1: 1,
         2: 10,
         3: 11
     }
-    let carry = 0                                   //1
-    let i=a.length-1                                //-1
-    let j=b.length-1                                //0
-    let result = ''                                 //'0101'
+    let carry = 0
+    let i=a.length-1
+    let j=b.length-1 
+    let result = '' 
     while(i>=0 || j>=0){  
-        let sum;                          //-1>=0
+        let sum;                          
         if(a[i] == undefined){
             // console.log("A")
             sum = binaryMap[0 + Number(b[j]) + carry]
@@ -19,10 +20,10 @@ var addBinary = function(a, b) {                    //1010, 1011
             sum = binaryMap[Number(a[i]) + 0 + carry]
         }
         else{
-            sum = binaryMap[Number(a[i]) + Number(b[j]) + carry]                //binaryMap[1 + 1 + 0]
+            sum = binaryMap[Number(a[i]) + Number(b[j]) + carry]
         }
         // console.log("SUM: " ,sum)
-        let currentValue = sum % 10;                                            //cv = 0
+        let currentValue = sum % 10;
         carry = Math.floor(sum / 10)           
         // console.log('CARRY: ', carry)                                          
         result = currentValue + result
