@@ -1,4 +1,4 @@
-//121. https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+//QUES - 121. https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
 var maxProfit = function (prices) {
   let minStockPrice = prices[0];
